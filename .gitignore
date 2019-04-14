@@ -1,1 +1,4 @@
 node_modules
+src/models/Cliente.js
+tmp/*
+!tmp/.gitkeep
