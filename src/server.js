@@ -10,22 +10,22 @@ const io = require("socket.io")(server);
 
 //app.use(cors);
 
-//io.on('connection', socket => {
-//  console.log('ok');
-//  socket.on('connectRoom', box => {
-//    socket.join(box);
-//  })
-//});
+io.on("connection", socket => {
+  console.log("ok");
+  socket.on("connectRoom", box => {
+    socket.join(box);
+  })
+});
 
 mongoose.connect("mongodb+srv://omnistack:omnistack@cluster0-mid2g.mongodb.net/omnistack?retryWrites=true", {
   useNewUrlParser: true
 });
 
-//app.use((req, res, next) => {
-//  req.io = io;
-//
-//  return next;
-//});
+app.use((req, res, next) => {
+  req.io = io;
+
+  return next();
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
