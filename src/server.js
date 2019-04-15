@@ -11,10 +11,9 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 io.on('connection', socket => {
-  console.log('ok');
   socket.on('connectRoom', box => {
     socket.join(box);
-  })
+  });
 });
 
 mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-mid2g.mongodb.net/omnistack?retryWrites=true', {
@@ -33,4 +32,5 @@ app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp')));
 
 app.use(require('./routes'));
 
-server.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000);
+//app.listen(3000);
