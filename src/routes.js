@@ -9,16 +9,14 @@ const FileController = require("./controllers/FileController");
 
 routes.post("/boxes", BoxController.store);
 routes.get("/boxes/:id", BoxController.show);
+routes.get("/list", BoxController.list);
+routes.get("/listAll", BoxController.listAll);
+//routes.delete("/delete/:id", BoxController.delete);
 
-//routes.post("/files", multer(multerConfig).single('file'), FileController.store);
 routes.post(
   "/boxes/:id/files",
   multer(multerConfig).single("file"),
   FileController.store
 );
-
-routes.get("/teste", (req, res) => {
-  return res.send("Hello Rocket");
-});
 
 module.exports = routes;
